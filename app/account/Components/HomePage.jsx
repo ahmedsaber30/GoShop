@@ -1,5 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, Image, TouchableOpacity, StyleSheet, Dimensions, Pressable } from 'react-native';
+import {
+  ScrollView,
+  View,
+  Text,
+  TextInput,
+  Image,
+  TouchableOpacity,
+  StyleSheet,
+  Dimensions,
+  Pressable
+} from 'react-native';
 import { router } from "expo-router";
 import AddToCart from './AddToCart';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -71,7 +81,7 @@ const HomePage = () => {
           <Image style={styles.logo} source={{ uri: profileData.imageUrl }} />
         </Pressable>
         <TextInput
-          placeholder=" Search Products"
+          placeholder="Search Products"
           value={searchQuery}
           onChangeText={setSearchQuery}
           style={styles.searchInput}
@@ -83,9 +93,11 @@ const HomePage = () => {
           <Image style={styles.cartFlag} source={{uri:'https://t3.ftcdn.net/jpg/03/14/84/68/360_F_314846831_5jJsC7Us9obgwMjRDqFhs04dodzvnZvi.jpg'}} />
         </TouchableOpacity>
       </View>
-      {filteredProducts.map(product => (
-        <ProductBox key={product.id} {...product} onAddToCart={() => handleAddToCart(product)} />
-      ))}
+      <ScrollView style={styles.scrollView}>
+        {filteredProducts.map(product => (
+          <ProductBox key={product.id} {...product} onAddToCart={() => handleAddToCart(product)} />
+        ))}
+      </ScrollView>
     </View>
   );
 };
@@ -95,16 +107,19 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 10,
   },
+  scrollView: {
+    flex: 1,
+  },
   logo: {
-    width: 50, 
-    height: 50, 
-    marginRight: 10, 
+    width: 50,
+    height: 50,
+    marginRight: 10,
     borderRadius: 50,
   },
   searchContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between', 
+    justifyContent: 'space-between',
     marginBottom: 20,
   },
   cartFlag: {
@@ -122,7 +137,7 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   productBox: {
-    flexDirection: 'column', 
+    flexDirection: 'column',
     borderWidth: 1,
     borderColor: 'gray',
     padding: 10,
@@ -132,25 +147,13 @@ const styles = StyleSheet.create({
   productImage: {
     width: '100%',
     height: 300,
+    aspectRatio: 1,
+    resizeMode: 'contain',
   },
   priceText: {
     fontSize: 18,
     fontWeight: 'bold',
     marginVertical: 10,
-  },
-  cartControls: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    width: 100,
-  },
-  button: {
-    borderWidth: 1,
-    borderColor: 'gray',
-    padding: 5,
-  },
-  buttonText: {
-    fontSize: 18,
-    fontWeight: 'bold',
   },
   productName: {
     fontSize: 16,

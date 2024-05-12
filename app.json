@@ -22,7 +22,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.ahmed2730.List2024"
     },
     "web": {
       "favicon": "./assets/favicon.png",
@@ -30,6 +31,14 @@
     },
     "plugins": [
       "expo-router"
-    ]
+    ],
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "fd377921-a8e9-4f1f-bc19-6cc66e0b47ce"
+      }
+    }
   }
 }

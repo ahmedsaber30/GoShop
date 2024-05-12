@@ -109,10 +109,10 @@ const Register = () => {
         style={{ borderWidth: 1, padding: 10, marginBottom: 10 }}
       />
       <Button title="Register" onPress={handlePress} />
-      <Pressable onPress={()=>router.navigate("/account/login")}>
+      <Pressable onPress={()=>router.navigate("/account/ForgetPassword")}>
         <Text style={{ marginTop: 10 }}>Login</Text>
-      </Pressable>
-      <Pressable>
+      </Pressable >
+      <Pressable onPress={()=>router.navigate("/account/")}>
         <Text style={{ marginTop: 10 }}>Forgot Password</Text>
       </Pressable>
       <Text>{error.code}</Text>

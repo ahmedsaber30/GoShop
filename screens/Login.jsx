@@ -67,9 +67,6 @@ const Login = () => {
       <Pressable onPress={()=>router.navigate("/account/register")}>
         <Text style={{ marginTop: 10 }}>Register</Text>
       </Pressable>
-      <Pressable onPress={()=>router.navigate("/account/ForgetPassword")}>
-        <Text style={{ marginTop: 10 }}>Forgot Password</Text>
-      </Pressable>
       <Text>{error.code}</Text>
     </View>
   );

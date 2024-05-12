@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, Image, Pressable } from 'react-native';
+import { View, Text, StyleSheet, Image, ScrollView, Pressable } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import RemoveFromCart from './RemoveFromCart';
 
@@ -46,6 +46,7 @@ const CartPage = () => {
 
   return (
     <View style={styles.container}>
+      <ScrollView style={styles.scrollView}>
       {cartItems.map((cartItem) => (
         <ProductBox
           key={cartItem.id}
@@ -55,6 +56,7 @@ const CartPage = () => {
           onRemoveFromCart={() => handleRemoveFromCart(cartItem.id)}
         />
       ))}
+      </ScrollView>
       <Text style={styles.priceText}>Total Price: ${totalPrice.toFixed(2)}</Text>
       <Pressable onPress={handleClearCart} style={styles.clearButton}>
         <Text style={styles.clearButtonText}>Clear Cart</Text>
@@ -84,6 +86,8 @@ const styles = StyleSheet.create({
   productImage: {
     width: '100%',
     height: 300,
+    aspectRatio: 1,
+    resizeMode: 'contain',
   },
   priceText: {
     fontSize: 18,
